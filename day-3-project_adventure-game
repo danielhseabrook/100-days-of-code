@@ -29,18 +29,18 @@ while playing == "yes":
   
   current_position = 0
   
-  current_position = input("left or right?\n")
+  current_position = input("You arrive at a crossraods. Do you go left or right?\n")
   current_position= current_position.lower()
   
   if current_position != "left":
     playing = input("You fall into a hole.\nGame Over\nPlay Again?\n")
     continue
   
-  current_position = input("Swim or wait?\n")
+  current_position = input("It begins to rain and the river bed in the distance starts to rapidly fill. Do you \"Swim\" across or \"wait\" for the storm to pass?\n")
   current_position= current_position.lower()
   
   if current_position != "wait":
-    playing = input("You are attacked by a shark.\nGame over.\nPlay Again?\n")
+    playing = input("You are taken in the violent current and drown.\nGame over.\nPlay Again?\n")
     continue
   
   current_position = input("You come to doors which are the colour of the rainbow.\n Which door will you pick?\n")

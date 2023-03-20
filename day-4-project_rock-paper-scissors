@@ -1,3 +1,4 @@
+import random
 playing = "yes"
 while playing == "yes":
   rock = '''
@@ -26,42 +27,38 @@ while playing == "yes":
         (____)
   ---.__(___)
   '''
-  
-  
-  import random
-  
-
-  player = input("Rock, paper or scissors?\n")
+  player = "invalid"
   npc = random.randint(0,2)
-  
+  #Determining the NPC move
   if npc == 0:
     npc = "rock"
-  
   elif npc == 1:
     npc = "paper"
-  
   else:
     npc = "scissors"
-  
-  
-  print(f"You play\n{player}")
-
-  if player == "rock":
-    print(rock)
-  elif player == "paper":
-    print(paper)
-  elif player == "scissors":
-    print(scissors)
-    
+  #Beggining game. Loops if invalid entry.  
+  while player == "invalid":
+    #Determining the players move and printing results.
+    player = input("Rock, paper or scissors?\n")    
+    print(f"You play\n{player}")    
+    if player == "rock":
+      print(rock)
+    elif player == "paper":
+      print(paper)
+    elif player == "scissors":
+      print(scissors)
+    else:
+      player = "invalid"
+      continue
+  #printing NPC results
   print(f"The computer plays\n{npc}")
-
   if npc == "rock":
     print(rock)
   elif npc == "paper":
     print(paper)
   elif player == "scissors":
     print(scissors)
-  
+  #determining the victor
   if player == "rock" and npc == "scissors":
     playing = input("You win!\nPlay again?")
     continue 
@@ -87,5 +84,7 @@ while playing == "yes":
     playing = "yes"
     
   else:
+    print("You typed an incorrect entry.\n You lose.")
+    playing = "yes"
     continue
 exit()

@@ -98,8 +98,7 @@ while replay == "yes":
       dealer_logic()
     else:
       dealer_logic()
-    check_hand_sum()
-  
+    check_hand_sum()  
     #Check hand sums for win, lose, draw.  
     if player_hand_sum > 21:
       game_status = "lose"

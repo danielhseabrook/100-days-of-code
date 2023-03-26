@@ -27,12 +27,12 @@ def start_game(player, dealer):
   draw_card(dealer_hand, dealer_hand_sum)  
 #Show hands
 def show_hands():
-  print(f"Player\'s hand: {player_hand}")
+  print(f"Player\'s hand: {player_hand} with a score of {player_hand_sum}")
   if  len(player_hand_split) > 0:
-    print (f"Player\'s second hand: {player_hand_split}") 
+    print (f"Player\'s second hand: {player_hand_split} with a score of {player_hand_split_sum}")    
+    print(f"Dealer\'s hand: {dealer_hand} with a score of {dealer_hand_sum}")
   else:
     pass
-  print(f"Dealer\'s hand: {dealer_hand[0]}")  
 #Check hands
 def check_hand_sum():
   global player_hand_sum
@@ -67,14 +67,16 @@ while replay == "yes":
     if player_hand_sum == 21:
       game_status == "Win"
       print("Black jack!\nYou win!")
-      print (f"Player\'s second hand: {player_hand_split} with a score of {player_hand_split_sum}")    
-      print(f"Dealer\'s hand: {dealer_hand} with a score of {dealer_hand_sum}")
+      show_hands()
     elif dealer_hand_sum == 21:
       game_status == "lose"
       print("Dealer has black jack!\nYou lose.")
-      print (f"Player\'s second hand: {player_hand_split} with a score of {player_hand_split_sum}")    
-      print(f"Dealer\'s hand: {dealer_hand} with a score of {dealer_hand_sum}")
-    show_hands()
+      show_hands()
+    #Print hans only showing dealers first card.
+    print(f"Player\'s hand: {player_hand}")
+    if  len(player_hand_split) > 0:
+      print (f"Player\'s second hand: {player_hand_split}")
+    print(f"Dealer\'s hand: {dealer_hand[0]}")  
     #Take player input for turn. Dealer logic runs after any input.  
     player_action = input("Would you like to \"Hit\", \"Split\", or \"Stay\"?\n")
     if player_action == "hit":
@@ -117,11 +119,7 @@ while replay == "yes":
       game_status = "draw"
     #If game status changes, print hands with unobscured dealer hand       and scores.
     if game_status == "win" or game_status == "draw" or game_status == "lose":
-      print(f"Player\'s hand: {player_hand} with a score of {player_hand_sum}")
-      if  len(player_hand_split) > 0:
-        print (f"Player\'s second hand: {player_hand_split} with a score of {player_hand_split_sum}")    
-      print(f"Dealer\'s hand: {dealer_hand} with a score of {dealer_hand_sum}")
-      
+      show_hands()      
   #Post game status and ask if player would like to play again.
   if game_status == "lose":
     replay = input("You lose!\nPlay again?\n")
